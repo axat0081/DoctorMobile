@@ -36,10 +36,15 @@ class AppointmentsViewModel @Inject constructor(
             field = value
             state.set("prescription", prescription)
         }
-    var appointmentTime = state.get<Long>("appointment_time") ?: ""
+    var appointmentTime = state.get<String>("appointment_time") ?: ""
         set(value) {
             field = value
             state.set("appointment_time", appointmentTime)
+        }
+    var appointmentDate = state.get<String>("appointment_time") ?: ""
+        set(value) {
+            field = value
+            state.set("appointment_time", appointmentDate)
         }
 
 }
