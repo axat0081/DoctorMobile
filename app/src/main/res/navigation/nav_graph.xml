@@ -8,19 +8,187 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.doctormobile.ui.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_loginFragment_to_pendingAppointmentsFragment"
+            app:destination="@id/pendingAppointmentsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.doctormobile.ui.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/pendingAppointmentsFragment"
+        android:name="com.example.doctormobile.ui.PendingAppointmentsFragment"
+        android:label="fragment_pending_appoinments"
+        tools:layout="@layout/fragment_pending_appoinments">
+        <action
+            android:id="@+id/action_pendingAppointmentsFragment_to_createAppointmentFragment"
+            app:destination="@id/createAppointmentFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_pendingAppointmentsFragment_to_pendingDetailsFragment"
+            app:destination="@id/pendingDetailsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_pendingAppointmentsFragment_to_assignedAppointmentsFragment"
+            app:destination="@id/assignedAppointmentsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_pendingAppointmentsFragment_to_completedAppointmentsFragment"
+            app:destination="@id/completedAppointmentsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_pendingAppointmentsFragment_to_bookMarkedAppointmentsFragment"
+            app:destination="@id/bookMarkedAppointmentsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAppointmentFragment"
+        android:name="com.example.doctormobile.ui.CreateAppointmentFragment"
+        android:label="Create Appointment"
+        tools:layout="@layout/fragment_create_appointment" />
+    <fragment
+        android:id="@+id/pendingDetailsFragment"
+        android:name="com.example.doctormobile.ui.details.PendingDetailsFragment"
+        android:label="Pending Appointment Details"
+        tools:layout="@layout/fragment_pending_details">
+        <action
+            android:id="@+id/action_pendingDetailsFragment_to_assignAppointmentFragment"
+            app:destination="@id/assignAppointmentFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+        <argument
+            android:name="pendingAppointmnent"
+            app:argType="com.example.doctormobile.models.PendingAppointment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assignAppointmentFragment"
+        android:name="com.example.doctormobile.ui.details.AssignAppointmentFragment"
+        android:label="Assign Appointment"
+        tools:layout="@layout/fragment_assign_appointment">
+        <argument
+            android:name="pendingAppointment"
+            app:argType="com.example.doctormobile.models.PendingAppointment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assignedAppointmentsFragment"
+        android:name="com.example.doctormobile.ui.AssignedAppointmentsFragment"
+        android:label="fragment_assigned_appointments"
+        tools:layout="@layout/fragment_assigned_appointments" >
+        <action
+            android:id="@+id/action_assignedAppointmentsFragment_to_assignedAppointmentDetailsFragment"
+            app:destination="@id/assignedAppointmentDetailsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/assignedAppointmentDetailsFragment"
+        android:name="com.example.doctormobile.ui.details.AssignedAppointmentDetailsFragment"
+        android:label="Assigned Appointments Details"
+        tools:layout="@layout/fragment_assigned_appointment_details">
+        <argument
+            android:name="appointment"
+            app:argType="com.example.doctormobile.models.AssignedAppointment" />
+        <action
+            android:id="@+id/action_assignedAppointmentDetailsFragment_to_assignPrescriptionFragment"
+            app:destination="@id/assignPrescriptionFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/completedAppointmentsFragment"
+        android:name="com.example.doctormobile.ui.CompletedAppointmentsFragment"
+        android:label="Prescribed Appointments"
+        tools:layout="@layout/fragment_compeleted_appointments" >
+        <action
+            android:id="@+id/action_completedAppointmentsFragment_to_completedAppointmentsDetailsFragment"
+            app:destination="@id/completedAppointmentsDetailsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/assignPrescriptionFragment"
+        android:name="com.example.doctormobile.ui.details.AssignPrescriptionFragment"
+        android:label="Assign Prescription"
+        tools:layout="@layout/fragment_assign_prescription">
+        <argument
+            android:name="appointment"
+            app:argType="com.example.doctormobile.models.AssignedAppointment" />
+    </fragment>
+    <fragment
+        android:id="@+id/completedAppointmentsDetailsFragment"
+        android:name="com.example.doctormobile.ui.details.CompletedAppointmentsDetailsFragment"
+        android:label="fragment_completed_appointment_details"
+        tools:layout="@layout/fragment_completed_appointment_details" >
+        <argument
+            android:name="appointment"
+            app:argType="com.example.doctormobile.models.CompletedAppointment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookMarkedAppointmentsFragment"
+        android:name="com.example.doctormobile.ui.BookMarkedAppointmentsFragment"
+        android:label="BookMarked Appiointments"
+        tools:layout="@layout/fragment_bookmarked_appointments">
+        <action
+            android:id="@+id/action_bookMarkedAppointmentsFragment_to_cachedCompletedAppointmentDetailsFragment"
+            app:destination="@id/cachedCompletedAppointmentDetailsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/cachedCompletedAppointmentDetailsFragment"
+        android:name="com.example.doctormobile.ui.details.CachedCompletedAppointmentDetailsFragment"
+        android:label="Appointment Details"
+        tools:layout="@layout/fragment_cached_appointment_details" >
+        <argument
+            android:name="appointment"
+            app:argType="com.example.doctormobile.models.CachedCompletedAppointment" />
     </fragment>
 </navigation>

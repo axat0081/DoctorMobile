@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/create_appointments"
+        android:title="Create Appointment" />
+    <item
+        android:id="@+id/assigned_appointments"
+        android:title="Assigned Appointments" />
+    <item
+        android:id="@+id/completed_appointments"
+        android:title="Completed Appointments" />
+    <item
+        android:id="@+id/bookmarked_appointments"
+        android:title="Bookmarked Apointments" />
+</menu>

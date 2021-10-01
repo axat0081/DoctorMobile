@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1012190617825",
+    "project_id": "doctormobile-e80b5",
+    "storage_bucket": "doctormobile-e80b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012190617825:android:6b1baadb776517a30697a0",
+        "android_client_info": {
+          "package_name": "com.example.doctormobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012190617825-vto6ppop8h4thqlhkf7ij7m10m2b3iqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5wjW-6YB8_ZBpyExqB3XcikxPgoP8re0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012190617825-vto6ppop8h4thqlhkf7ij7m10m2b3iqk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
