@@ -1,5 +1,6 @@
 package com.example.doctormobile.util
 
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
@@ -46,4 +47,8 @@ val deletedCollectionReference by lazy {
 val deletedQuery by lazy {
     deletedCollectionReference
         .orderBy("time", Query.Direction.DESCENDING)
+}
+
+val orderRefQuery by lazy {
+    FirebaseDatabase.getInstance().reference.child("Order")
 }

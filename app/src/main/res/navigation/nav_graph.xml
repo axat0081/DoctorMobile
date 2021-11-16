@@ -78,6 +78,20 @@
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_pendingAppointmentsFragment_to_orderMedicinesFragment"
+            app:destination="@id/orderMedicinesFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_pendingAppointmentsFragment_to_placedOrdersFragment"
+            app:destination="@id/placedOrdersFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
     </fragment>
     <fragment
         android:id="@+id/createAppointmentFragment"
@@ -190,5 +204,40 @@
         <argument
             android:name="appointment"
             app:argType="com.example.doctormobile.models.CachedCompletedAppointment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderMedicinesFragment"
+        android:name="com.example.doctormobile.ui.OrderMedicinesFragment"
+        android:label="Order Medicines"
+        tools:layout="@layout/fragment_order_medicines" >
+        <action
+            android:id="@+id/action_orderMedicinesFragment_to_pendingAppointmentsFragment"
+            app:destination="@id/pendingAppointmentsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/placedOrdersFragment"
+        android:name="com.example.doctormobile.ui.PlacedOrdersFragment"
+        android:label="Placed Orders"
+        tools:layout="@layout/fragment_placed_orders">
+        <action
+            android:id="@+id/action_placedOrdersFragment_to_placedOrderDetailsFragment"
+            app:destination="@id/placedOrderDetailsFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/placedOrderDetailsFragment"
+        android:name="com.example.doctormobile.ui.details.PlacedOrderDetailsFragment"
+        android:label="Order Detials"
+        tools:layout="@layout/fragment_placed_order_details" >
+        <argument
+            android:name="order"
+            app:argType="com.example.doctormobile.models.MedOrder" />
     </fragment>
 </navigation>

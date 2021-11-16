@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.example.doctormobile.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -58,6 +59,7 @@ class AuthViewModel @Inject constructor(
             mAuth.createUserWithEmailAndPassword(registerEmail, registerPassword)
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
+                        MainActivity.email = registerEmail
                         viewModelScope.launch {
                             authChannel.send(AuthEvent.AuthSuccess("Account Created"))
                         }
@@ -86,6 +88,7 @@ class AuthViewModel @Inject constructor(
         viewModelScope.launch {
             mAuth.signInWithEmailAndPassword(loginEmail, loginPassword)
                 .addOnCompleteListener {
+                    MainActivity.email = loginEmail
                     if (it.isSuccessful) {
                         viewModelScope.launch {
                             authChannel.send(AuthEvent.AuthSuccess("Login Successful"))

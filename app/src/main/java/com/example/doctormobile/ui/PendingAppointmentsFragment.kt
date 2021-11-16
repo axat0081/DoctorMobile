@@ -69,6 +69,16 @@ class PendingAppointmentsFragment : Fragment(R.layout.fragment_pending_appoinmen
                     PendingAppointmentsFragmentDirections.actionPendingAppointmentsFragmentToBookMarkedAppointmentsFragment()
                 )
             }
+            R.id.orderMedicinesFragment -> {
+                findNavController().navigate(
+                    PendingAppointmentsFragmentDirections.actionPendingAppointmentsFragmentToOrderMedicinesFragment()
+                )
+            }
+            R.id.placedOrdersFragment -> {
+                findNavController().navigate(
+                    PendingAppointmentsFragmentDirections.actionPendingAppointmentsFragmentToPlacedOrdersFragment()
+                )
+            }
         }
         return true
     }
