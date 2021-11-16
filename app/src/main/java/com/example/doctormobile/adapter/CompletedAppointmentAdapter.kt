@@ -6,24 +6,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.doctormobile.databinding.AppointmentDsiplayLayoutBinding
 import com.example.doctormobile.models.CompletedAppointment
-import com.example.doctormobile.util.completedQuery
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.example.doctormobile.util.completedRefQuery
+import com.firebase.ui.database.FirebaseRecyclerAdapter
+import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
 class CompletedAppointmentsAdapter(private val listener: OnItemClickListener) :
-    FirestoreRecyclerAdapter<CompletedAppointment, CompletedAppointmentsAdapter.CompletedAppointmentViewHolder>(
+    FirebaseRecyclerAdapter<CompletedAppointment, CompletedAppointmentsAdapter.CompletedAppointmentViewHolder>(
         options
     ) {
 
 
     companion object {
-        var options: FirestoreRecyclerOptions<CompletedAppointment> =
-            FirestoreRecyclerOptions.Builder<CompletedAppointment>()
+        var options: FirebaseRecyclerOptions<CompletedAppointment> =
+            FirebaseRecyclerOptions.Builder<CompletedAppointment>()
                 .setQuery(
-                    completedQuery,
+                    completedRefQuery,
                     CompletedAppointment::class.java
-                )
-                .build()
+                ).build()
     }
 
     override fun onCreateViewHolder(

@@ -6,21 +6,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.doctormobile.databinding.AppointmentDsiplayLayoutBinding
 import com.example.doctormobile.models.AssignedAppointment
-import com.example.doctormobile.util.assignedQuery
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.example.doctormobile.util.assignedRefQuery
+import com.firebase.ui.database.FirebaseRecyclerAdapter
+import com.firebase.ui.database.FirebaseRecyclerOptions
 
 class AssignedAppointmentsAdapter(private val listener: OnItemClickListener) :
-    FirestoreRecyclerAdapter<AssignedAppointment, AssignedAppointmentsAdapter.AssignedAppointmentViewHolder>(
+    FirebaseRecyclerAdapter<AssignedAppointment, AssignedAppointmentsAdapter.AssignedAppointmentViewHolder>(
         options
     ) {
 
 
     companion object {
-        var options: FirestoreRecyclerOptions<AssignedAppointment> =
-            FirestoreRecyclerOptions.Builder<AssignedAppointment>()
+        var options: FirebaseRecyclerOptions<AssignedAppointment> =
+            FirebaseRecyclerOptions.Builder<AssignedAppointment>()
                 .setQuery(
-                    assignedQuery,
+                    assignedRefQuery,
                     AssignedAppointment::class.java
                 )
                 .build()

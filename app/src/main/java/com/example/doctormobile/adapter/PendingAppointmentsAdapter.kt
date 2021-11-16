@@ -7,23 +7,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.doctormobile.databinding.AppointmentDsiplayLayoutBinding
 import com.example.doctormobile.models.PendingAppointment
 import com.example.doctormobile.util.pendingQuery
+import com.example.doctormobile.util.pendingRefQuery
+import com.firebase.ui.database.FirebaseRecyclerAdapter
+import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 
 class PendingAppointmentsAdapter(private val listener: OnItemClickListener) :
-    FirestoreRecyclerAdapter<PendingAppointment, PendingAppointmentsAdapter.PendingAppointmentViewHolder>(
+    FirebaseRecyclerAdapter<PendingAppointment, PendingAppointmentsAdapter.PendingAppointmentViewHolder>(
         options
     ) {
 
 
     companion object {
-        var options: FirestoreRecyclerOptions<PendingAppointment> =
-            FirestoreRecyclerOptions.Builder<PendingAppointment>()
+        var options: FirebaseRecyclerOptions<PendingAppointment> =
+            FirebaseRecyclerOptions.Builder<PendingAppointment>()
                 .setQuery(
-                    pendingQuery,
+                    pendingRefQuery,
                     PendingAppointment::class.java
-                )
-                .build()
+                ).build()
     }
 
     override fun onCreateViewHolder(

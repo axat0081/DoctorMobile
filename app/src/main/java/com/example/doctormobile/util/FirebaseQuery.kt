@@ -52,3 +52,15 @@ val deletedQuery by lazy {
 val orderRefQuery by lazy {
     FirebaseDatabase.getInstance().reference.child("Order")
 }
+
+val assignedRefQuery by lazy {
+    FirebaseDatabase.getInstance().reference.child("Assigned")
+}
+
+val completedRefQuery by lazy {
+    FirebaseDatabase.getInstance().reference.child("Completed")
+}
+
+val pendingRefQuery by lazy {
+    FirebaseDatabase.getInstance().reference.child("Pending")
+}

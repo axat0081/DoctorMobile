@@ -9,8 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.doctormobile.models.AssignedAppointment
 import com.example.doctormobile.models.CompletedAppointment
 import com.example.doctormobile.models.PendingAppointment
-import com.example.doctormobile.room.CompletedAppointmentsDao
-import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.database.DatabaseReference
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -24,13 +23,13 @@ class AppointmentsViewModel @Inject constructor(
     private val app: Application,
     private val state: SavedStateHandle,
     @Named("Pending")
-    private val pendingRef: CollectionReference,
+    private val pendingRef: DatabaseReference,
     @Named("Assigned")
-    private val assignedCollectionRef: CollectionReference,
+    private val assignedRef: DatabaseReference,
     @Named("Completed")
-    private val completedRef: CollectionReference,
+    private val completedRef: DatabaseReference,
 
-) : AndroidViewModel(app) {
+    ) : AndroidViewModel(app) {
     var studentName = state.get<String>("student_name") ?: ""
         set(value) {
             field = value
@@ -161,8 +160,8 @@ class AppointmentsViewModel @Inject constructor(
             }
         }
         viewModelScope.launch {
-            pendingRef.document(pendingAppointment!!.caseId!!)
-                .delete().addOnCompleteListener { task ->
+            pendingRef.child(pendingAppointment!!.caseId!!)
+                .removeValue().addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val id = pendingAppointment!!.caseId!!
                         val time =
@@ -189,7 +188,7 @@ class AppointmentsViewModel @Inject constructor(
                             docName = docName,
                             time = appointmentTime,
                         )
-                        assignedCollectionRef.document(id).set(assignedAppointment)
+                        assignedRef.child(id).setValue(assignedAppointment)
                             .addOnCompleteListener { task2 ->
                                 if (task2.isSuccessful) {
                                     viewModelScope.launch {
@@ -239,7 +238,7 @@ class AppointmentsViewModel @Inject constructor(
         }
 
         viewModelScope.launch {
-            val id = pendingRef.document().id
+            val id = pendingRef.push().key
             val item = PendingAppointment(
                 caseId = id,
                 name = studentName,
@@ -247,7 +246,7 @@ class AppointmentsViewModel @Inject constructor(
                 time = System.currentTimeMillis(),
                 enrollNo = enrollNo
             )
-            pendingRef.document(id).set(item).addOnCompleteListener {
+            pendingRef.child(id!!).setValue(item).addOnCompleteListener {
                 if (it.isSuccessful) {
                     viewModelScope.launch {
                         appointmentChannel.send(AppointmentEvent.CreationSuccess("Appointment Request Sent"))
@@ -268,8 +267,8 @@ class AppointmentsViewModel @Inject constructor(
             }
             return
         }
-        Log.e("ID",assignedAppointment!!.caseId!!)
-        assignedCollectionRef.document(assignedAppointment!!.caseId!!).delete()
+        Log.e("ID", assignedAppointment!!.caseId!!)
+        assignedRef.child(assignedAppointment!!.caseId!!).removeValue()
             .addOnCompleteListener { task1 ->
                 if (task1.isSuccessful) {
                     val completedAppointment = CompletedAppointment(
@@ -280,7 +279,8 @@ class AppointmentsViewModel @Inject constructor(
                         enrollNo = assignedAppointment!!.enrollNo,
                         cause = assignedAppointment!!.cause
                     )
-                    completedRef.document(assignedAppointment!!.caseId!!).set(completedAppointment)
+                    completedRef.child(assignedAppointment!!.caseId!!)
+                        .setValue(completedAppointment)
                         .addOnCompleteListener { task2 ->
                             if (task2.isSuccessful) {
                                 viewModelScope.launch {

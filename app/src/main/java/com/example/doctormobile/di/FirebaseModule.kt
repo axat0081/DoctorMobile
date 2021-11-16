@@ -22,37 +22,32 @@ object FirebaseModule {
 
     @Provides
     @Singleton
-    fun providesDatabaseReference(): DatabaseReference = FirebaseDatabase.getInstance().reference
-
-    @Provides
-    @Singleton
     @Named("Pending")
-    fun providesPendingRef(): CollectionReference =
-        FirebaseFirestore.getInstance().collection("Pending")
+    fun providesPendingRef(): DatabaseReference =
+        FirebaseDatabase.getInstance().reference.child("Pending")
 
     @Provides
     @Singleton
     @Named("Assigned")
-    fun providesAssignedRef(): CollectionReference =
-        FirebaseFirestore.getInstance().collection("Assigned")
+    fun providesAssignedRef(): DatabaseReference =
+        FirebaseDatabase.getInstance().reference.child("Assigned")
 
     @Provides
     @Singleton
     @Named("Completed")
-    fun providesCompletedRef(): CollectionReference =
-        FirebaseFirestore.getInstance().collection("Completed")
+    fun providesCompletedRef(): DatabaseReference =
+        FirebaseDatabase.getInstance().reference.child("Completed")
+
+    @Provides
+    @Singleton
+    @Named("Order")
+    fun providesOrderRef(): DatabaseReference =
+        FirebaseDatabase.getInstance().reference.child("Order")
 
     @Provides
     @Singleton
     @Named("Deleted")
     fun providesDeletedRef(): CollectionReference =
         FirebaseFirestore.getInstance().collection("Deleted")
-
-    @Provides
-    @Singleton
-    @Named("Order")
-    fun providesOrderRef(db: DatabaseReference): DatabaseReference =
-        db.child("Order")
-
 
 }
