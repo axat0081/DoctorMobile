@@ -1,11 +1,15 @@
 package com.example.doctormobile.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.doctormobile.R
 import com.example.doctormobile.databinding.FragmentCreateAppointmentBinding
 import com.example.doctormobile.viewModel.AppointmentsViewModel
@@ -59,5 +63,37 @@ class CreateAppointmentFragment : Fragment(R.layout.fragment_create_appointment)
                 }
             }
         }
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.student_nav_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            R.id.assigned_appointments -> {
+                findNavController().navigate(
+                    R.id.assignAppointmentFragment
+                )
+            }
+            R.id.completed_appointments -> {
+                findNavController().navigate(
+                    R.id.completedAppointmentsFragment
+                )
+            }
+            R.id.orderMedicinesFragment -> {
+                findNavController().navigate(
+                    R.id.orderMedicinesFragment
+                )
+            }
+        }
+        return true
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

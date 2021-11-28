@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -35,6 +36,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 viewModel.loginPassword = it.toString()
             }
             loginButton.setOnClickListener {
+                loginProgressBar.isVisible = true
                 viewModel.onLoginClick()
                 hideKeyboard(requireContext())
             }
@@ -47,11 +49,23 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 viewModel.authFlow.collect {
                     when (it) {
                         is AuthViewModel.AuthEvent.AuthSuccess -> {
-                            findNavController().navigate(
-                                LoginFragmentDirections.actionLoginFragmentToPendingAppointmentsFragment()
-                            )
+                            loginProgressBar.isVisible = false
+                            if (viewModel.loginEmail.contains(
+                                    "@st.niituniversity.com",
+                                    ignoreCase = true
+                                )
+                            ) {
+                                findNavController().navigate(
+                                    R.id.createAppointmentFragment
+                                )
+                            } else {
+                                findNavController().navigate(
+                                    LoginFragmentDirections.actionLoginFragmentToPendingAppointmentsFragment()
+                                )
+                            }
                         }
                         is AuthViewModel.AuthEvent.AuthFailure -> {
+                            loginProgressBar.isVisible = false
                             Snackbar.make(
                                 requireView(),
                                 it.msg,

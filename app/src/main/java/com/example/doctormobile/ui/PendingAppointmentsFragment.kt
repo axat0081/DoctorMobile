@@ -44,16 +44,11 @@ class PendingAppointmentsFragment : Fragment(R.layout.fragment_pending_appoinmen
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.nav_menu, menu)
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.create_appointments -> {
-                findNavController().navigate(
-                    PendingAppointmentsFragmentDirections.actionPendingAppointmentsFragmentToCreateAppointmentFragment()
-                )
-            }
+
             R.id.assigned_appointments -> {
                 findNavController().navigate(
                     PendingAppointmentsFragmentDirections.actionPendingAppointmentsFragmentToAssignedAppointmentsFragment()
@@ -64,19 +59,9 @@ class PendingAppointmentsFragment : Fragment(R.layout.fragment_pending_appoinmen
                     PendingAppointmentsFragmentDirections.actionPendingAppointmentsFragmentToCompletedAppointmentsFragment()
                 )
             }
-            R.id.bookmarked_appointments -> {
-                findNavController().navigate(
-                    PendingAppointmentsFragmentDirections.actionPendingAppointmentsFragmentToBookMarkedAppointmentsFragment()
-                )
-            }
-            R.id.orderMedicinesFragment -> {
-                findNavController().navigate(
-                    PendingAppointmentsFragmentDirections.actionPendingAppointmentsFragmentToOrderMedicinesFragment()
-                )
-            }
             R.id.placedOrdersFragment -> {
                 findNavController().navigate(
-                    PendingAppointmentsFragmentDirections.actionPendingAppointmentsFragmentToPlacedOrdersFragment()
+                    R.id.placedOrdersFragment
                 )
             }
         }

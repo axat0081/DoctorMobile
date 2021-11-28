@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PlacedOrdersFragment">
+    tools:context=".ui.PlacedOrdersFragment"
+    android:background="@drawable/background">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/placed_orders_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/med_display_layout"/>
 </RelativeLayout>

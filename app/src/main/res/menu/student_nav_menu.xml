@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/assigned_appointments"
         android:title="Assigned Appointments" />
@@ -7,6 +8,7 @@
         android:id="@+id/completed_appointments"
         android:title="Completed Appointments" />
     <item
-        android:id="@+id/placedOrdersFragment"
-        android:title="Placed Orders" />
+        android:id="@+id/orderMedicinesFragment"
+        android:title="Order Medicines" />
+
 </menu>

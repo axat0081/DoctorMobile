@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -34,6 +35,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 viewModel.registerPassword = it.toString()
             }
             registerButton.setOnClickListener {
+                registrationProgressBar.isVisible = true
                 viewModel.onRegisterClick()
                 hideKeyboard(requireContext())
             }
@@ -41,11 +43,23 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 viewModel.authFlow.collect {
                     when (it) {
                         is AuthViewModel.AuthEvent.AuthSuccess -> {
-                            findNavController().navigate(
-                                RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
-                            )
+                            registrationProgressBar.isVisible = false
+                            if (viewModel.registerEmail.contains(
+                                    "@st.niituniversity.com",
+                                    ignoreCase = true
+                                )
+                            ) {
+                                findNavController().navigate(
+                                    R.id.createAppointmentFragment
+                                )
+                            } else {
+                                findNavController().navigate(
+                                    R.id.pendingAppointmentsFragment
+                                )
+                            }
                         }
                         is AuthViewModel.AuthEvent.AuthFailure -> {
+                            registrationProgressBar.isVisible = false
                             Snackbar.make(
                                 requireView(),
                                 it.msg,
