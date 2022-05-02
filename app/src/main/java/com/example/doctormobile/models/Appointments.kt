@@ -11,7 +11,7 @@ data class PendingAppointment(
     val name: String? = null,
     val enrollNo: String? = null,
     val cause: String? = null,
-    val time: Long? = null
+    val time: Long = 0
 ):Parcelable
 
 @Parcelize

@@ -75,7 +75,7 @@ class CreateAppointmentFragment : Fragment(R.layout.fragment_create_appointment)
 
             R.id.assigned_appointments -> {
                 findNavController().navigate(
-                    R.id.assignAppointmentFragment
+                    R.id.assignedAppointmentsFragment
                 )
             }
             R.id.completed_appointments -> {
@@ -86,6 +86,11 @@ class CreateAppointmentFragment : Fragment(R.layout.fragment_create_appointment)
             R.id.orderMedicinesFragment -> {
                 findNavController().navigate(
                     R.id.orderMedicinesFragment
+                )
+            }
+            R.id.bookmark_appointments ->{
+                findNavController().navigate(
+                    R.id.bookMarkedAppointmentsFragment
                 )
             }
         }

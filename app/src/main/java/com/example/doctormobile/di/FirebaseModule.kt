@@ -24,25 +24,25 @@ object FirebaseModule {
     @Singleton
     @Named("Pending")
     fun providesPendingRef(): DatabaseReference =
-        FirebaseDatabase.getInstance().reference.child("Pending")
+        FirebaseDatabase.getInstance("https://nuhealthcenter-651ef-default-rtdb.asia-southeast1.firebasedatabase.app/").reference.child("Pending")
 
     @Provides
     @Singleton
     @Named("Assigned")
     fun providesAssignedRef(): DatabaseReference =
-        FirebaseDatabase.getInstance().reference.child("Assigned")
+        FirebaseDatabase.getInstance("https://nuhealthcenter-651ef-default-rtdb.asia-southeast1.firebasedatabase.app/").reference.child("Assigned")
 
     @Provides
     @Singleton
     @Named("Completed")
     fun providesCompletedRef(): DatabaseReference =
-        FirebaseDatabase.getInstance().reference.child("Completed")
+        FirebaseDatabase.getInstance("https://nuhealthcenter-651ef-default-rtdb.asia-southeast1.firebasedatabase.app/").reference.child("Completed")
 
     @Provides
     @Singleton
     @Named("Order")
     fun providesOrderRef(): DatabaseReference =
-        FirebaseDatabase.getInstance().reference.child("Order")
+        FirebaseDatabase.getInstance("https://nuhealthcenter-651ef-default-rtdb.asia-southeast1.firebasedatabase.app/").reference.child("Order")
 
     @Provides
     @Singleton

@@ -8,6 +8,9 @@
         android:id="@+id/completed_appointments"
         android:title="Completed Appointments" />
     <item
+        android:id="@+id/bookmark_appointments"
+        android:title="BoookMark Appointments" />
+    <item
         android:id="@+id/orderMedicinesFragment"
         android:title="Order Medicines" />
 

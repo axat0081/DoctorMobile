@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         var email: String = "12345"
+        var isDoc = false
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

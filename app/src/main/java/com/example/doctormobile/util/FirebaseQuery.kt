@@ -50,17 +50,17 @@ val deletedQuery by lazy {
 }
 
 val orderRefQuery by lazy {
-    FirebaseDatabase.getInstance().reference.child("Order")
+    FirebaseDatabase.getInstance("https://nuhealthcenter-651ef-default-rtdb.asia-southeast1.firebasedatabase.app/ ").reference.child("Order")
 }
 
 val assignedRefQuery by lazy {
-    FirebaseDatabase.getInstance().reference.child("Assigned")
+    FirebaseDatabase.getInstance("https://nuhealthcenter-651ef-default-rtdb.asia-southeast1.firebasedatabase.app/").reference.child("Assigned")
 }
 
 val completedRefQuery by lazy {
-    FirebaseDatabase.getInstance().reference.child("Completed")
+    FirebaseDatabase.getInstance("https://nuhealthcenter-651ef-default-rtdb.asia-southeast1.firebasedatabase.app/").reference.child("Completed")
 }
 
 val pendingRefQuery by lazy {
-    FirebaseDatabase.getInstance().reference.child("Pending")
+    FirebaseDatabase.getInstance("https://nuhealthcenter-651ef-default-rtdb.asia-southeast1.firebasedatabase.app/").reference.child("Pending")
 }

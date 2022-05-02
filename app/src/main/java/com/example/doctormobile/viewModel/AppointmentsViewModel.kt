@@ -10,6 +10,7 @@ import com.example.doctormobile.models.AssignedAppointment
 import com.example.doctormobile.models.CompletedAppointment
 import com.example.doctormobile.models.PendingAppointment
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.firestore.SetOptions
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -246,6 +247,7 @@ class AppointmentsViewModel @Inject constructor(
                 time = System.currentTimeMillis(),
                 enrollNo = enrollNo
             )
+
             pendingRef.child(id!!).setValue(item).addOnCompleteListener {
                 if (it.isSuccessful) {
                     viewModelScope.launch {

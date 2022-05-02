@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.doctormobile.MainActivity
 import com.example.doctormobile.R
 import com.example.doctormobile.databinding.FragmentRegisterBinding
 import com.example.doctormobile.viewModel.AuthViewModel
@@ -37,7 +38,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             registerButton.setOnClickListener {
                 registrationProgressBar.isVisible = true
                 viewModel.onRegisterClick()
-                hideKeyboard(requireContext())
             }
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                 viewModel.authFlow.collect {
@@ -45,14 +45,16 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                         is AuthViewModel.AuthEvent.AuthSuccess -> {
                             registrationProgressBar.isVisible = false
                             if (viewModel.registerEmail.contains(
-                                    "@st.niituniversity.com",
+                                    "@st.niituniversity.in",
                                     ignoreCase = true
                                 )
                             ) {
+                                MainActivity.isDoc = true
                                 findNavController().navigate(
                                     R.id.createAppointmentFragment
                                 )
                             } else {
+                                MainActivity.isDoc = true
                                 findNavController().navigate(
                                     R.id.pendingAppointmentsFragment
                                 )
@@ -75,15 +77,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                 )
             }
         }
-    }
-
-    private fun hideKeyboard(mContext: Context) {
-        val imm = mContext
-            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(
-            requireActivity().window
-                .currentFocus!!.windowToken, 0
-        )
     }
 
     override fun onDestroy() {

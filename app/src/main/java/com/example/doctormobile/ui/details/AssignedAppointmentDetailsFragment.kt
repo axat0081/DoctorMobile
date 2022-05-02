@@ -3,9 +3,11 @@ package com.example.doctormobile.ui.details
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.doctormobile.MainActivity
 import com.example.doctormobile.R
 import com.example.doctormobile.databinding.FragmentAssignedAppointmentDetailsBinding
 import com.example.doctormobile.models.AssignedAppointment
@@ -24,6 +26,9 @@ class AssignedAppointmentDetailsFragment :
         _binding = FragmentAssignedAppointmentDetailsBinding.bind(view)
         val appointment: AssignedAppointment = args.appointment
         binding.apply {
+            if(!MainActivity.isDoc){
+                assignPrescriptionButton.isVisible = false
+            }
             caseIdTextView.text = "Case Id: ${appointment.caseId}"
             nameTextView.text = "Name: ${appointment.name}"
             causeTextView.text = "Cause: ${appointment.cause}"
